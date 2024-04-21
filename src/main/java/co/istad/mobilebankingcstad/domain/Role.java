@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "roles_tbl")
+@Table(name = "role_tbl")
 @Data
 public class Role {
     @Id

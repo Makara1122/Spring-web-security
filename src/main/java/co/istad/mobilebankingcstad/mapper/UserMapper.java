@@ -4,10 +4,8 @@ import co.istad.mobilebankingcstad.domain.Role;
 import co.istad.mobilebankingcstad.domain.User;
 import co.istad.mobilebankingcstad.features.user.dto.UserRequest;
 import co.istad.mobilebankingcstad.features.user.dto.UserResponse;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.NullValueCheckStrategy;
+import co.istad.mobilebankingcstad.features.user.dto.UserUpdateRequest;
+import org.mapstruct.*;
 
 import java.util.List;
 import java.util.Set;
@@ -15,6 +13,7 @@ import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
+    @Named("toUserResponse")
     @Mapping(target = "roles", expression = "java(mapRoles(user.getRoles()))")
     @Mapping(target = "studentCardId", source = "studentIdCard")
     UserResponse toUserResponse(User user);
@@ -28,13 +27,8 @@ public interface UserMapper {
     @Mapping(target = "studentIdCard", source = "studentCardId")
     User requestToUser(UserRequest userRequest);
 
-
-
-    @Mapping(target = "username",
-            source = "userRequest.username",
-            nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
-            defaultExpression = "java(user.getUsername())")
     @Mapping(target = "roles", ignore = true)
-    void updateUserFromRequest(@MappingTarget User user, UserRequest userRequest);
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateUserFromRequest(@MappingTarget User user, UserUpdateRequest userUpdateRequest);
 
 }

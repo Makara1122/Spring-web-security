@@ -3,3 +3,11 @@ spring:
     name: "mobile-banking-cstad"
   profiles:
     active: dev # configuration dev file
+  mail:
+    username: lasmoonton@gmail.com
+    password: arxe ztjo zvfc gwga
+    host: smtp.gmail.com
+    port: 587
+    properties:
+      mail.smtp.auth: true           # Enable authentication (if required)
+      mail.smtp.starttls.enable: true

@@ -19,6 +19,20 @@ public class BaseResponse <T> {
                 .setMessage("Created Successfully!!! ")
         ;
     }
+    public static <T> BaseResponse<T> getAllSuccess() {
+        return new BaseResponse<T>()
+                .setStatus(HttpStatus.OK.value())
+                .setMessage("Get All  Successfully!!! ")
+        ;
+    }
+
+    public static <T> BaseResponse<T> updateSuccess() {
+        return new BaseResponse<T>()
+                .setStatus(HttpStatus.OK.value())
+                .setMessage("updated Successfully!!! ")
+                ;
+
+    }
     public static <T> BaseResponse<T> ok() {
         return new BaseResponse<T>()
                 .setStatus(HttpStatus.OK.value())

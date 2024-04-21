@@ -3,6 +3,7 @@ package co.istad.mobilebankingcstad.features.user;
 
 import co.istad.mobilebankingcstad.features.user.dto.UserRequest;
 import co.istad.mobilebankingcstad.features.user.dto.UserResponse;
+import co.istad.mobilebankingcstad.features.user.dto.UserUpdateRequest;
 import co.istad.mobilebankingcstad.utils.BaseResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -90,9 +91,9 @@ public class UserRestController {
     @PatchMapping("/{id}")
     @Operation(summary = "Update user by id")
     public BaseResponse<UserResponse> updateUserByID(
-            @PathVariable() String id,@RequestBody UserRequest userRequest){
-        return BaseResponse.<UserResponse>ok()
-                .setPayload(userService.updateUserById(id,userRequest));
+            @PathVariable() String id, @RequestBody UserUpdateRequest userUpdateRequest){
+        return BaseResponse.<UserResponse>updateSuccess()
+                .setPayload(userService.updateUserById(id,userUpdateRequest));
     }
     @PatchMapping("/{id}/disable")
     public BaseResponse<UserResponse> disableUser(@PathVariable String id){

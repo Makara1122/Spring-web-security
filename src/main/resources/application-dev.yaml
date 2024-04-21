@@ -13,9 +13,9 @@ spring:
 
   datasource:
     username: postgres
-    password: postgres@2023
+    password: "010104"
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5434/mobile_banking_db
+    url: jdbc:postgresql://localhost:5432/postgres
   jpa:
     show-sql: true
     hibernate:
@@ -24,4 +24,3 @@ spring:
 springdoc:
   swagger-ui:
     path: /
-
