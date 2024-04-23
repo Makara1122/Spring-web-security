@@ -11,7 +11,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "user_tbl")
-@Data
+@Getter
+@Setter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -41,8 +42,12 @@ public class User {
     private BigDecimal monthlyIncomeRange;
     private String oneSignalId; // for notification
     private String studentIdCard;
-    private Boolean isDeleted;  // for statistic usage!
-    private Boolean isBlocked; // disable
     private LocalDateTime createdAt;
+    private boolean isAccountExpired;
+
+    private Boolean isAccountLocked;
+    private Boolean isCredentialsExpired;
+    private Boolean isBlocked ;
+    private Boolean isDeleted ;
 
 }
